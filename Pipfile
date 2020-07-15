@@ -13,6 +13,7 @@ cymysql = "==0.9.1"
 flask-httpauth = "==2.7.0"
 flask-cors = "==2.1.0"
 requests = "==2.18.4"
+email-validator = "*"
 
 [requires]
 python_version = "3.6"
