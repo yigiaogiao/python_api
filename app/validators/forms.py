@@ -1,15 +1,16 @@
 # -*-coding:utf-8-*- 
 # author: xdz
 # @Time :2020/7/14 10:59
-from wtforms import Form, StringField, IntegerField
+from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired, length, Email, Regexp, ValidationError
 from app.libs.enums import ClientTypeEnum
 from app.models.user import User
+from app.validators.base import BaseForm as Form
 
 
 class ClientForm(Form):
     # 账号
-    account = StringField(validators=[DataRequired(), length(
+    account = StringField(validators=[DataRequired(message='不允许为空'), length(
         min=5, max=32
     )])
     # 密码
@@ -19,6 +20,7 @@ class ClientForm(Form):
 
     def validate_type(self, value):
         """
+        自定义type验证器
         :param value: 将传递过来的数字转换为枚举,再将枚举赋值给type
         :return:
         """
