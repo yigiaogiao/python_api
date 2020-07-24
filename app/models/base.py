@@ -63,5 +63,6 @@ class Base(db.Model):
                 setattr(self, key, value)
 
     def delete(self):
+        # 0为删除
         self.status = 0
 

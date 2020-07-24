@@ -18,7 +18,8 @@ class RedPrint:
         if url_prefix is None:
             url_prefix = '/' + self.name
         for f, rule, options in self.mound:
-            endpoint = options.pop("endpoint", f.__name__)
+            # 构建我们自定义为v1.moduke_name(模块名)+endpoint
+            endpoint = self.name + '+' + options.pop("endpoint", f.__name__)
             bp.add_url_rule(url_prefix + rule, endpoint, f, **options)
         pass
 

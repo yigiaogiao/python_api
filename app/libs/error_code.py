@@ -7,9 +7,16 @@ from app.libs.error import APIException
 
 
 class Success(APIException):
+    # 201新增成功
     code = 201
     msg = 'ok'
     error_code = 0
+
+
+class DeleteSuccess(Success):
+    # 204删除成功
+    code = 202
+    error_code = 1
 
 
 class ServerError(APIException):
@@ -41,6 +48,14 @@ class NotFound(APIException):
 
 
 class AuthFailed(APIException):
+    # 授权失败
     code = 401
     error_code = 1005
     msg = 'authorization failed'
+
+
+class Forbidden(APIException):
+    # 禁止访问权限不够
+    code = 403
+    error_code = 1004
+    msg = 'forbidden, not in scope'
